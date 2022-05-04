@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Roboto:wght@100;300;400&family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400&display=swap');
+
+:root {
+	--background-color: #19171a;
+	--card-color: rgba(255, 255, 255, 0.05);
+	--card-hover-color: rgba(23, 104, 167, 0.226);
+
+	--number-of-square: 2;
+}
+
+@media (max-width: 480px) {
+	.arrow {
+		display: none;
+	}
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0 5%;
+	background-attachment: fixed;
+	background: var(--background-color);
+	font-size: 1vw;
+}
+
+a, a:hover, a:visited, a:active {
+	color: inherit;
+	text-decoration: none;
+}
+
+.container {
+	display: grid;
+	grid-template-rows: 100vh auto;
+}
+
+.hero {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	width: 100%;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+	font-size: 35px;
+}
+
+.header .fa {
+	font-size: 60px;
+}
+
+.header .info h1 {
+	font-family: 'Nunito';
+	font-weight: 400;
+	color: #fff;
+	margin-bottom: 0px;
+}
+
+.header .info h2 {
+	font-family: 'Nunito';
+	font-weight: 200;
+	color: #fff;
+	margin-top: 0px;
+	margin-bottom: 50px;
+}
+
+.header .info .title {
+	font-family: 'Nunito';
+	font-weight: 100;
+}
+
+.header .link{
+	display: grid;
+	grid-template-columns: repeat(var(--number-of-square), 1fr);
+	grid-gap: 2.5vw;
+}
+
+.header .link .link-card{
+	background: var(--card-color);
+	color: #fff;
+	border-radius: 5px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 15vh;
+	height: 15vh;
+
+	box-shadow: 0 5px 7px rgba(0, 0, 0, 0.35);
+	transition: 0.2s ease-in-out;
+	cursor: pointer;
+}
+
+.header .link .link-card:hover{
+	background: var(--card-hover-color);
+	transform: translateY(-5px);
+}
+
+.arrow {
+	flex-shrink: 1;
+	flex-basis: 10%;
+	min-height: 0;
+	width: 100%;
+	text-align: center;
+}
+
+.arrow img:hover {
+	transform: translateY(10px);
+}
+
+.arrow a {
+	width: 100%;
+}
+
+.arrow img {
+	height: 60%;
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+}
+
+/* START SOURCE : https://codepen.io/AlexZab */
+.card-container {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	margin: 40px 0;
+	height: 100vh;
+}
+
+.card-container .card {
+	position: relative;
+	width: 300px;
+	height: 400px;
+	background: var(--card-color);
+	margin: 20px;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	backdrop-filter: blur(10px);
+}
+
+.card-container .card .content {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	transition: 0.5s;
+}
+
+.card-container .card:hover {
+	background: var(--card-hover-color);
+}
+
+.card-container .card:hover .content {
+	transform: translateY(-20px);
+}
+
+.card-container .card .content .imgBx {
+	position: relative;
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+}
+
+.card-container .card .content .imgBx img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.card-container .card .content .imgBx .fa {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    transition: 0.7s;
+    color: #fff;
+}
+
+.card-container .card .content .contentBx h3 {
+	color: #fff;
+	/* text-transform: uppercase; */
+	letter-spacing: 2px;
+	font-weight: 500;
+	font-size: 35px;
+	text-align: center;
+	margin: 20px 0 10px;
+	line-height: 1.1em;
+	font-family: 'Nunito';
+}
+
+.card-container .card .content .contentBx h3 span {
+	font-family: 'Roboto';
+	font-size: 25px;
+	font-weight: 300;
+	text-transform: initial;
+}
+
+.card-container .card .sci {
+	font-family: 'Roboto';
+	padding: 0;
+	position: absolute;
+	bottom: 25px;
+	display: flex;
+}
+
+.card-container .card .sci li {
+	list-style: none;
+	margin: 0 10px;
+	transform: translateY(40px);
+	transition: 0.5s;
+	opacity: 0;
+}
+
+.card-container .card:hover .sci li {
+	transform: translateY(0px);
+	opacity: 1;
+	color: #fff;
+	font-size: 20px;
+}
+/* END SOURCE : https://codepen.io/AlexZab */
