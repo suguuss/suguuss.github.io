@@ -1,0 +1,940 @@
+/*
+                        _______
+                       /       \
+                      .==.    .==.
+                     ((  ))==((  ))
+                    / "=="    "=="\
+                   /____|| || ||___\
+       ________     ____    ________  ___    ___
+       |  ___  \   /    \   |  ___  \ |  |  /  /
+       |  |  \  \ /  /\  \  |  |  \  \|  |_/  /
+       |  |   )  /  /__\  \ |  |__/  /|  ___  \
+       |  |__/  /  ______  \|  ____  \|  |  \  \
+_______|_______/__/ ____ \__\__|___\__\__|___\__\____
+|  ___  \ |  ____/ /    \   |  ___  \ |  ____|  ___  \
+|  |  \  \|  |___ /  /\  \  |  |  \  \|  |___|  |  \  \
+|  |__/  /|  ____/  /__\  \ |  |   )  |  ____|  |__/  /
+|  ____  \|  |__/  ______  \|  |__/  /|  |___|  ____  \
+|__|   \__\____/__/      \__\_______/ |______|__|   \__\
+                https://darkreader.org
+*/
+
+/*! Dark reader generated CSS | Licensed under MIT https://github.com/darkreader/darkreader/blob/master/LICENSE */
+
+/* User-Agent Style */
+html {
+    background-color: #181a1b !important;
+}
+html {
+    color-scheme: dark !important;
+}
+html, body {
+    background-color: #181a1b;
+}
+html, body {
+    border-color: #736b5e;
+    color: #e8e6e3;
+}
+a {
+    color: #3391ff;
+}
+table {
+    border-color: #545b5e;
+}
+::placeholder {
+    color: #b2aba1;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #404400 !important;
+    color: #e8e6e3 !important;
+}
+::-webkit-scrollbar {
+    background-color: #202324;
+    color: #aba499;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #454a4d;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #575e62;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #484e51;
+}
+::-webkit-scrollbar-corner {
+    background-color: #181a1b;
+}
+::selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}
+::-moz-selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}
+
+/* Invert Style */
+.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, #bit-notification-bar-iframe, ::-webkit-calendar-picker-indicator {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}
+
+/* Variables Style */
+:root {
+   --darkreader-neutral-background: #131516;
+   --darkreader-neutral-text: #d8d4cf;
+   --darkreader-selection-background: #004daa;
+   --darkreader-selection-text: #e8e6e3;
+}
+
+/* Modified CSS */
+a {
+    background-image: none;
+    background-color: initial;
+}
+a:focus {
+    outline-color: initial;
+}
+a:active,
+a:hover {
+    outline-color: initial;
+}
+abbr[title] {
+    border-bottom-color: rgb(57, 62, 64);
+    text-decoration-color: initial;
+}
+mark {
+    background-image: initial;
+    background-color: rgb(153, 153, 0);
+    color: rgb(232, 230, 227);
+}
+img {
+    border-color: initial;
+}
+fieldset {
+    border-color: rgb(66, 71, 74);
+}
+legend {
+    border-color: initial;
+}
+body {
+    background-image: initial;
+    background-color: rgb(24, 26, 27);
+    color: rgba(232, 230, 227, 0.8);
+}
+.subheader,
+.admonitionblock td.content > .title,
+.audioblock > .title,
+.exampleblock > .title,
+.imageblock > .title,
+.listingblock > .title,
+.literalblock > .title,
+.stemblock > .title,
+.openblock > .title,
+.paragraph > .title,
+.quoteblock > .title,
+table.tableblock > .title,
+.verseblock > .title,
+.videoblock > .title,
+.dlist > .title,
+.olist > .title,
+.ulist > .title,
+.qlist > .title,
+.hdlist > .title {
+    color: rgb(230, 141, 127);
+}
+a {
+    color: rgb(114, 172, 227);
+    text-decoration-color: initial;
+}
+a:hover,
+a:focus {
+    color: rgb(127, 180, 229);
+}
+a img {
+    border-color: initial;
+}
+h1,
+h2,
+h3,
+#toctitle,
+.sidebarblock > .content > .title,
+h4,
+h5,
+h6 {
+    color: rgb(221, 101, 82);
+}
+h1 small,
+h2 small,
+h3 small,
+#toctitle small,
+.sidebarblock > .content > .title small,
+h4 small,
+h5 small,
+h6 small {
+    color: rgb(231, 147, 134);
+}
+hr {
+    border-color: rgb(57, 62, 64);
+}
+code {
+    color: rgba(232, 230, 227, 0.9);
+}
+ul.square li ul,
+ul.circle li ul,
+ul.disc li ul {
+    list-style-image: inherit;
+}
+blockquote {
+    border-left-color: rgb(58, 62, 65);
+}
+blockquote,
+blockquote p {
+    color: rgba(232, 230, 227, 0.85);
+}
+table {
+    background-image: initial;
+    background-color: rgb(24, 26, 27);
+    border-color: rgb(57, 62, 64);
+}
+table thead,
+table tfoot {
+    background-image: initial;
+    background-color: rgb(28, 31, 32);
+}
+table thead tr th,
+table thead tr td,
+table tfoot tr th,
+table tfoot tr td {
+    color: rgba(232, 230, 227, 0.8);
+}
+table tr th,
+table tr td {
+    color: rgba(232, 230, 227, 0.8);
+}
+table tr.even,
+table tr.alt {
+    background-image: initial;
+    background-color: rgb(28, 31, 32);
+}
+:not(pre):not([class^="L"]) > code {
+    background-image: initial;
+    background-color: rgb(28, 31, 32);
+}
+pre {
+    color: rgba(232, 230, 227, 0.9);
+}
+pre code,
+pre pre {
+    color: inherit;
+}
+.keyseq {
+    color: rgba(200, 195, 188, 0.8);
+}
+kbd {
+    color: rgba(232, 230, 227, 0.8);
+    background-image: initial;
+    background-color: rgb(29, 31, 32);
+    border-color: rgb(62, 68, 70);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px,
+    rgb(24, 26, 27) 0px 0px 0px 0.1em inset;
+}
+.menuseq,
+.menuref {
+    color: rgb(232, 230, 227);
+}
+p a > code:hover {
+    color: rgba(232, 230, 227, 0.9);
+}
+#header > h1:first-child {
+    color: rgba(232, 230, 227, 0.85);
+}
+#header > h1:first-child + #toc {
+    border-top-color: rgb(57, 62, 64);
+}
+#header > h1:only-child,
+body.toc2 #header > h1:nth-last-child(2) {
+    border-bottom-color: rgb(57, 62, 64);
+}
+#header .details {
+    border-bottom-color: rgb(57, 62, 64);
+    color: rgba(232, 230, 227, 0.6);
+}
+#header .details span.email a {
+    color: rgba(232, 230, 227, 0.85);
+}
+#header .details br + span.author::before {
+    color: rgba(232, 230, 227, 0.85);
+}
+#content > h1:first-child:not([class]) {
+    color: rgba(232, 230, 227, 0.85);
+    border-bottom-color: rgb(57, 62, 64);
+}
+#toc {
+    border-bottom-color: rgb(54, 59, 61);
+}
+#toc a {
+    text-decoration-color: initial;
+}
+#toc a:active {
+    text-decoration-color: initial;
+}
+#toctitle {
+    color: rgb(230, 141, 127);
+}
+@media screen and (min-width: 768px) {
+    #toc.toc2 {
+        background-image: initial;
+        background-color: rgb(28, 31, 32);
+        border-right-color: rgb(54, 59, 61);
+    }
+    body.toc2.toc-right #toc.toc2 {
+        border-left-color: rgb(54, 59, 61);
+    }
+}
+#content #toc {
+    border-color: rgb(57, 62, 64);
+    background-image: initial;
+    background-color: rgb(28, 31, 32);
+}
+#footer {
+    background-image: initial;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+#footer-text {
+    color: rgba(232, 230, 227, 0.8);
+}
+.sect1 + .sect1 {
+    border-top-color: rgb(54, 59, 61);
+}
+#content h1 > a.anchor,
+h2 > a.anchor,
+h3 > a.anchor,
+#toctitle > a.anchor,
+.sidebarblock > .content > .title > a.anchor,
+h4 > a.anchor,
+h5 > a.anchor,
+h6 > a.anchor {
+    text-decoration-color: initial !important;
+}
+#content h1 > a.link,
+h2 > a.link,
+h3 > a.link,
+#toctitle > a.link,
+.sidebarblock > .content > .title > a.link,
+h4 > a.link,
+h5 > a.link,
+h6 > a.link {
+    color: rgb(221, 101, 82);
+    text-decoration-color: initial;
+}
+#content h1 > a.link:hover,
+h2 > a.link:hover,
+h3 > a.link:hover,
+#toctitle > a.link:hover,
+.sidebarblock > .content > .title > a.link:hover,
+h4 > a.link:hover,
+h5 > a.link:hover,
+h6 > a.link:hover {
+    color: rgb(223, 113, 97); 
+}
+details > summary {
+    outline-color: initial; -webkit-tap-highlight-color: transparent; 
+}
+details > summary::before {
+    border-top-color: transparent; border-right-color: transparent; border-bottom-color: transparent; border-left-color: initial; 
+}
+details[open] > summary::before {
+    border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent; border-top-color: initial; 
+}
+.paragraph.lead > p, #preamble > .sectionbody > [class="paragraph"]:first-of-type p {
+    color: rgba(232, 230, 227, 0.85);
+}
+.admonitionblock > table {
+    border-color: initial;
+    background-image: none;
+    background-color: initial;
+}
+.admonitionblock > table td.content {
+    border-left-color: rgb(57, 62, 64);
+    color: rgba(232, 230, 227, 0.6);
+}
+.exampleblock > .content {
+    border-color: rgb(55, 60, 62);
+    background-image: initial;
+    background-color: rgb(24, 26, 27);
+}
+.sidebarblock {
+    border-color: rgb(59, 64, 66);
+    background-image: initial;
+    background-color: rgb(31, 34, 35);
+}
+.sidebarblock > .content > .title {
+    color: rgb(230, 141, 127);
+}
+.literalblock pre,
+.listingblock > .content > pre:not(.highlight), .listingblock > .content > pre[class="highlight"], .listingblock > .content > pre[class^="highlight "] {
+    background-image: initial;
+    background-color: rgb(28, 31, 32);
+}
+.literalblock.output pre {
+    color: rgb(227, 225, 221);
+    background-image: initial;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+.listingblock code[data-lang]::before {
+    color: inherit;
+}
+.listingblock.terminal pre .command::before {
+    color: inherit;
+}
+.prettyprint {
+    background-image: initial;
+    background-color: rgb(28, 31, 32);
+}
+pre.prettyprint li {
+    background-image: none;
+    background-color: initial;
+}
+table.linenotable {
+    border-color: initial;
+    background-image: none;
+    background-color: initial;
+}
+table.linenotable td[class] {
+    color: inherit;
+}
+table.linenotable td.linenos,
+pre.pygments .linenos {
+    border-right-color: initial;
+}
+.quoteblock blockquote,
+.quoteblock p {
+    color: rgba(232, 230, 227, 0.85);
+}
+.quoteblock blockquote {
+    border-color: initial;
+}
+.quoteblock blockquote::before {
+    color: rgb(230, 141, 127);
+    text-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px;
+}
+.verseblock pre {
+    color: rgba(232, 230, 227, 0.85);
+}
+.quoteblock .attribution cite,
+.verseblock .attribution cite {
+    color: rgba(232, 230, 227, 0.6);
+}
+.quoteblock.excerpt > blockquote,
+.quoteblock .quoteblock {
+    border-left-color: rgb(57, 62, 64);
+}
+.quoteblock.excerpt blockquote,
+.quoteblock.excerpt p,
+.quoteblock .quoteblock blockquote,
+.quoteblock .quoteblock p {
+    color: inherit;
+}
+.quoteblock.excerpt .attribution,
+.quoteblock .quoteblock .attribution {
+    color: inherit;
+}
+table.tableblock,
+th.tableblock,
+td.tableblock {
+    border-color: rgb(57, 62, 64);
+}
+table.stripes-all > * > tr,
+table.stripes-odd > * > tr:nth-of-type(2n+1),
+table.stripes-even > * > tr:nth-of-type(2n),
+table.stripes-hover > * > tr:hover {
+    background-image: initial;
+    background-color: rgb(28, 31, 32);
+}
+tbody tr th {
+    background-image: initial;
+    background-color: rgb(28, 31, 32);
+}
+tbody tr th,
+tbody tr th p,
+tfoot tr th,
+tfoot tr th p {
+    color: rgba(232, 230, 227, 0.8);
+}
+p.tableblock > code:only-child {
+    background-image: none;
+    background-color: initial;
+}
+ul.inline {
+    list-style-image: initial;
+}
+.hdlist > table,
+.colist > table {
+    border-color: initial;
+    background-image: none;
+    background-color: initial;
+}
+.hdlist > table > tbody > tr,
+.colist > table > tbody > tr {
+    background-image: none;
+    background-color: initial;
+}
+.thumb,
+.th {
+    border-color: rgb(48, 52, 54);
+    box-shadow: rgb(43, 47, 49) 0px 0px 0px 1px;
+}
+a.image {
+    text-decoration-color: initial;
+}
+sup.footnote a,
+sup.footnoteref a {
+    text-decoration-color: initial;
+}
+sup.footnote a:active,
+sup.footnoteref a:active {
+    text-decoration-color: initial;
+}
+#footnotes .footnote a:first-of-type {
+    text-decoration-color: initial;
+}
+.underline {
+    text-decoration-color: initial;
+}
+.overline {
+    text-decoration-color: initial;
+}
+.line-through {
+    text-decoration-color: initial;
+}
+.aqua {
+    color: rgb(70, 255, 255);
+}
+.aqua-background {
+    background-image: initial;
+    background-color: rgb(0, 200, 200);
+}
+.black {
+    color: rgb(232, 230, 227);
+}
+.black-background {
+    background-image: initial;
+    background-color: rgb(0, 0, 0);
+}
+.blue {
+    color: rgb(89, 150, 255);
+}
+.blue-background {
+    background-image: initial;
+    background-color: rgb(0, 0, 200);
+}
+.fuchsia {
+    color: rgb(255, 70, 255);
+}
+.fuchsia-background {
+    background-image: initial;
+    background-color: rgb(200, 0, 200);
+}
+.gray {
+    color: rgb(171, 164, 153);
+}
+.gray-background {
+    background-image: initial;
+    background-color: rgb(94, 102, 106);
+}
+.green {
+    color: rgb(202, 197, 190);
+}
+.green-background {
+    background-image: initial;
+    background-color: rgb(0, 100, 0);
+}
+.lime {
+    color: rgb(70, 255, 70);
+}
+.lime-background {
+    background-image: initial;
+    background-color: rgb(0, 200, 0);
+}
+.maroon {
+    color: rgb(202, 197, 190);
+}
+.maroon-background {
+    background-image: initial;
+    background-color: rgb(100, 0, 0);
+}
+.navy {
+    color: rgb(202, 197, 190);
+}
+.navy-background {
+    background-image: initial;
+    background-color: rgb(0, 0, 100);
+}
+.olive {
+    color: rgb(202, 197, 190);
+}
+.olive-background {
+    background-image: initial;
+    background-color: rgb(100, 100, 0);
+}
+.purple {
+    color: rgb(202, 197, 190);
+}
+.purple-background {
+    background-image: initial;
+    background-color: rgb(100, 0, 100);
+}
+.red {
+    color: rgb(255, 70, 70);
+}
+.red-background {
+    background-image: initial;
+    background-color: rgb(200, 0, 0);
+}
+.silver {
+    color: rgb(162, 154, 142);
+}
+.silver-background {
+    background-image: initial;
+    background-color: rgb(62, 67, 70);
+}
+.teal {
+    color: rgb(202, 197, 190);
+}
+.teal-background {
+    background-image: initial;
+    background-color: rgb(0, 100, 100);
+}
+.white {
+    color: rgb(192, 186, 178);
+}
+.white-background {
+    background-image: initial;
+    background-color: rgb(27, 29, 30);
+}
+.yellow {
+    color: rgb(255, 255, 70);
+}
+.yellow-background {
+    background-image: initial;
+    background-color: rgb(200, 200, 0); 
+}
+.admonitionblock td.icon [class^="fa icon-"] {
+    text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 2px;
+}
+.admonitionblock td.icon .icon-note::before {
+    color: rgb(138, 186, 231);
+}
+.admonitionblock td.icon .icon-tip::before {
+    text-shadow: rgba(124, 124, 0, 0.8) 1px 1px 2px;
+    color: rgb(221, 218, 214);
+}
+.admonitionblock td.icon .icon-warning::before {
+    color: rgb(255, 172, 70);
+}
+.admonitionblock td.icon .icon-caution::before {
+    color: rgb(255, 121, 70);
+}
+.admonitionblock td.icon .icon-important::before {
+    color: rgb(255, 70, 70);
+}
+.conum[data-value] {
+    background-image: initial;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: rgb(232, 230, 227) !important;
+}
+.conum[data-value] * {
+    color: rgb(232, 230, 227) !important;
+}
+b.conum * {
+    color: inherit !important;
+}
+.exampleblock > .content {
+    background-image: initial;
+    background-color: rgb(42, 37, 0);
+    border-color: rgb(57, 62, 64);
+    box-shadow: rgb(43, 46, 48) 0px 1px 4px;
+}
+:root {
+    --maincolor: #FFFFFF;
+    --primarycolor: #2c3e50;
+    --darkreader-text--secondarycolor: #dd6552;
+    --darkreader-text--tertiarycolor: #7fd8e6;
+    --sidebarbackground: #CCC;
+    --linkcolor: #b71c1c;
+    --linkcoloralternate: #f44336;
+    --white: #FFFFFF;
+    --black: #000000;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--darkreader-text--secondarycolor) !important;
+}
+.title {
+    color: var(--darkreader-text--tertiarycolor) !important;
+}
+.fa-border {
+    border-color: rgb(53, 57, 59);
+}
+.fa-inverse {
+    color: rgb(232, 230, 227);
+}
+.sr-only {
+    border-color: initial;
+}
+pre.pygments .hll {
+    background-color: rgb(35, 47, 52);
+}
+pre.pygments {
+    background-image: initial;
+    background-color: rgb(30, 40, 45);
+    color: rgb(192, 255, 255);
+}
+pre.pygments .tok-c {
+    color: rgb(167, 159, 148);
+}
+pre.pygments .tok-err {
+    color: rgb(255, 84, 112);
+}
+pre.pygments .tok-esc {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-g {
+    color: rgb(192, 255, 255);
+}
+pre.pygments .tok-k {
+    color: rgb(190, 133, 182);
+}
+pre.pygments .tok-l {
+    color: rgb(191, 230, 133);
+}
+pre.pygments .tok-n {
+    color: rgb(192, 255, 255);
+}
+pre.pygments .tok-o {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-p {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-ch {
+    color: rgb(167, 159, 148);
+}
+pre.pygments .tok-cm {
+    color: rgb(167, 159, 148);
+}
+pre.pygments .tok-cp {
+    color: rgb(167, 159, 148);
+}
+pre.pygments .tok-cpf {
+    color: rgb(167, 159, 148);
+}
+pre.pygments .tok-c1 {
+    color: rgb(167, 159, 148);
+}
+pre.pygments .tok-cs {
+    color: rgb(167, 159, 148);
+}
+pre.pygments .tok-gd {
+    color: rgb(255, 84, 112);
+}
+pre.pygments .tok-ge {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-gr {
+    color: rgb(255, 84, 112);
+}
+pre.pygments .tok-gh {
+    color: rgb(191, 230, 133);
+}
+pre.pygments .tok-gi {
+    color: rgb(191, 230, 133);
+}
+pre.pygments .tok-go {
+    color: rgb(167, 159, 148);
+}
+pre.pygments .tok-gp {
+    color: rgb(255, 201, 100);
+}
+pre.pygments .tok-gs {
+    color: rgb(255, 84, 112);
+}
+pre.pygments .tok-gu {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-gt {
+    color: rgb(255, 84, 112);
+}
+pre.pygments .tok-kc {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-kd {
+    color: rgb(190, 133, 182);
+}
+pre.pygments .tok-kn {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-kp {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-kr {
+    color: rgb(190, 133, 182);
+}
+pre.pygments .tok-kt {
+    color: rgb(190, 133, 182);
+}
+pre.pygments .tok-ld {
+    color: rgb(191, 230, 133);
+}
+pre.pygments .tok-m {
+    color: rgb(247, 137, 104);
+}
+pre.pygments .tok-s {
+    color: rgb(191, 230, 133);
+}
+pre.pygments .tok-na {
+    color: rgb(190, 133, 182);
+}
+pre.pygments .tok-nb {
+    color: rgb(116, 184, 255);
+}
+pre.pygments .tok-nc {
+    color: rgb(255, 201, 100);
+}
+pre.pygments .tok-no {
+    color: rgb(192, 255, 255);
+}
+pre.pygments .tok-nd {
+    color: rgb(116, 184, 255);
+}
+pre.pygments .tok-ni {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-ne {
+    color: rgb(255, 201, 100);
+}
+pre.pygments .tok-nf {
+    color: rgb(116, 184, 255);
+}
+pre.pygments .tok-nl {
+    color: rgb(116, 184, 255);
+}
+pre.pygments .tok-nn {
+    color: rgb(255, 201, 100);
+}
+pre.pygments .tok-nx {
+    color: rgb(192, 255, 255);
+}
+pre.pygments .tok-py {
+    color: rgb(255, 201, 100);
+}
+pre.pygments .tok-nt {
+    color: rgb(255, 84, 112);
+}
+pre.pygments .tok-nv {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-ow {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-w {
+    color: rgb(192, 255, 255);
+}
+pre.pygments .tok-mb {
+    color: rgb(247, 137, 104);
+}
+pre.pygments .tok-mf {
+    color: rgb(247, 137, 104);
+}
+pre.pygments .tok-mh {
+    color: rgb(247, 137, 104);
+}
+pre.pygments .tok-mi {
+    color: rgb(247, 137, 104);
+}
+pre.pygments .tok-mo {
+    color: rgb(247, 137, 104);
+}
+pre.pygments .tok-sa {
+    color: rgb(190, 133, 182);
+}
+pre.pygments .tok-sb {
+    color: rgb(191, 230, 133);
+}
+pre.pygments .tok-sc {
+    color: rgb(191, 230, 133);
+}
+pre.pygments .tok-dl {
+    color: rgb(192, 255, 255);
+}
+pre.pygments .tok-sd {
+    color: rgb(167, 159, 148);
+}
+pre.pygments .tok-s2 {
+    color: rgb(191, 230, 133);
+}
+pre.pygments .tok-se {
+    color: rgb(192, 255, 255);
+}
+pre.pygments .tok-sh {
+    color: rgb(191, 230, 133);
+}
+pre.pygments .tok-si {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-sx {
+    color: rgb(191, 230, 133);
+}
+pre.pygments .tok-sr {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-s1 {
+    color: rgb(191, 230, 133);
+}
+pre.pygments .tok-ss {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-bp {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-fm {
+    color: rgb(116, 184, 255);
+}
+pre.pygments .tok-vc {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-vg {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-vi {
+    color: rgb(121, 217, 255);
+}
+pre.pygments .tok-vm {
+    color: rgb(116, 184, 255);
+}
+pre.pygments .tok-il {
+    color: rgb(247, 137, 104);
+}
+
+/* Override Style */
+.vimvixen-hint {
+    background-color: #7b5300 !important;
+    border-color: #d8b013 !important;
+    color: #f3e8c8 !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1 {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: #0f3a48 !important;
+}
+embed[type="application/pdf"][src="about:blank"] { filter: invert(100%) contrast(90%); }
