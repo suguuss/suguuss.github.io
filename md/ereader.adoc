@@ -1110,10 +1110,10 @@ In my opinion, one of the best possible improvements would be to change the way 
 === Project management
 
 [[graphHeure]]
-image::images/ereader/gestpro/graphheures.png[graphHeures, pdfwidth=90%, title="Heures total par activités"]
+image::images/ereader/gestpro/graphheures.png[graphHeures, pdfwidth=90%, title="Total hours per activity"]
 
 [[graphRepartition]]
-image::images/ereader/gestpro/graphrepartition.png[graphRepartition, pdfwidth=90%, title="Répartition du temps par activités"]
+image::images/ereader/gestpro/graphrepartition.png[graphRepartition, pdfwidth=90%, title="Distribution of time by activity"]
 
 
 == Development tools used
