@@ -6,7 +6,7 @@
 	--card-color: rgba(255, 255, 255, 0.05);
 	--card-hover-color: rgba(23, 104, 167, 0.226);
 
-	--number-of-square: 2;
+	--number-of-square: 3;
 }
 
 @media (max-width: 480px) {
