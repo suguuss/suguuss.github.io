@@ -1,0 +1,38 @@
+<!-- {%- if site.texture.showNav -%}
+<div class="navbar">
+	<ul>
+		{% for link in site.texture.navigation %}
+		<a href="{{ link.url | prepend:site.baseurl }}"><li {% if link.url == page.url %}class="active"{% endif %} >{{ link.title }}</li></a>
+		{% endfor %}
+	</ul>
+</div>
+{%- endif -%} -->
+{%- if site.texture.showNav -%}
+<div class="navbar">
+	<ul>
+		<script>
+			function toggle_darkmode() {
+				var dark_btn  = document.getElementById("dark-button");
+				var light_btn = document.getElementById("light-button");
+				var dark_css  = document.getElementById("darktheme");
+	
+				if (dark_css.disabled) {
+					dark_css.removeAttribute("disabled");
+					dark_btn.style = "display: none";
+					light_btn.style = "display: inline";
+				}
+				else {
+					dark_btn.style = "display: inline";
+					light_btn.style = "display: none";
+					dark_css.setAttribute("disabled", "true");
+				}
+			}
+		</script>
+		{% for link in page.navig %}
+		<a href="{{ link.url }}"><li {% if link.url == page.url %}class="active"{% endif %} >{{ link.title }}</li></a>
+		{% endfor %}
+		<a id="dark-button" style="display: none" onclick="toggle_darkmode()"><li>Dark theme</li></a>
+		<a id="light-button" onclick="toggle_darkmode()"><li>Light theme</li></a>
+	</ul>
+</div>
+{%- endif -%}

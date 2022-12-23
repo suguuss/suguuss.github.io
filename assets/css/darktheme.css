@@ -1,0 +1,515 @@
+/*
+                        _______
+                       /       \
+                      .==.    .==.
+                     ((  ))==((  ))
+                    / "=="    "=="\
+                   /____|| || ||___\
+       ________     ____    ________  ___    ___
+       |  ___  \   /    \   |  ___  \ |  |  /  /
+       |  |  \  \ /  /\  \  |  |  \  \|  |_/  /
+       |  |   )  /  /__\  \ |  |__/  /|  ___  \
+       |  |__/  /  ______  \|  ____  \|  |  \  \
+_______|_______/__/ ____ \__\__|___\__\__|___\__\____
+|  ___  \ |  ____/ /    \   |  ___  \ |  ____|  ___  \
+|  |  \  \|  |___ /  /\  \  |  |  \  \|  |___|  |  \  \
+|  |__/  /|  ____/  /__\  \ |  |   )  |  ____|  |__/  /
+|  ____  \|  |__/  ______  \|  |__/  /|  |___|  ____  \
+|__|   \__\____/__/      \__\_______/ |______|__|   \__\
+                https://darkreader.org
+*/
+
+/*! Dark reader generated CSS | Licensed under MIT https://github.com/darkreader/darkreader/blob/main/LICENSE */
+
+/* User-Agent Style */
+html {
+    background-color: #181a1b !important;
+}
+html {
+    color-scheme: dark !important;
+}
+html, body, input, textarea, select, button, dialog {
+    background-color: #181a1b;
+}
+html, body, input, textarea, select, button {
+    border-color: #736b5e;
+    color: #e8e6e3;
+}
+a {
+    color: #3391ff;
+}
+table {
+    border-color: #545b5e;
+}
+::placeholder {
+    color: #b2aba1;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #404400 !important;
+    color: #e8e6e3 !important;
+}
+::-webkit-scrollbar {
+    background-color: #202324;
+    color: #aba499;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #454a4d;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #575e62;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #484e51;
+}
+::-webkit-scrollbar-corner {
+    background-color: #181a1b;
+}
+* {
+    scrollbar-color: #454a4d #202324;
+}
+::selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}
+::-moz-selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}
+
+/* Invert Style */
+.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, #bit-notification-bar-iframe, ::-webkit-calendar-picker-indicator {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}
+
+/* Variables Style */
+:root {
+   --darkreader-neutral-background: #131516;
+   --darkreader-neutral-text: #d8d4cf;
+   --darkreader-selection-background: #004daa;
+   --darkreader-selection-text: #e8e6e3;
+}
+
+/* Modified CSS */
+[class^="icon-"]::before, [class*=" icon-"]::before {
+    text-decoration-color: inherit;
+}
+a {
+    background-color: transparent;
+}
+a:active,
+a:hover {
+    outline-color: currentcolor;
+}
+abbr[title] {
+    border-bottom-color: currentcolor;
+}
+mark {
+    background-color: rgb(153, 153, 0);
+    background-image: none;
+    color: rgb(232, 230, 227);
+}
+img {
+    border-color: currentcolor;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: inherit;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border-color: currentcolor;
+}
+fieldset {
+    border-color: rgb(66, 71, 74);
+}
+legend {
+    border-color: currentcolor;
+}
+.highlight {
+    background-color: rgb(48, 36, 3);
+    color: rgb(167, 160, 148);
+}
+.highlight .c {
+    color: rgb(168, 161, 149);
+}
+.highlight .err {
+    color: rgb(167, 160, 148);
+}
+.highlight .g {
+    color: rgb(167, 160, 148);
+}
+.highlight .k {
+    color: rgb(234, 255, 97);
+}
+.highlight .l {
+    color: rgb(167, 160, 148);
+}
+.highlight .n {
+    color: rgb(167, 160, 148);
+}
+.highlight .o {
+    color: rgb(234, 255, 97);
+}
+.highlight .x {
+    color: rgb(235, 116, 67);
+}
+.highlight .p {
+    color: rgb(167, 160, 148);
+}
+.highlight .cm {
+    color: rgb(168, 161, 149);
+}
+.highlight .cp {
+    color: rgb(234, 255, 97);
+}
+.highlight .c1 {
+    color: rgb(168, 161, 149);
+}
+.highlight .cs {
+    color: rgb(234, 255, 97);
+}
+.highlight .gd {
+    color: rgb(102, 215, 206);
+}
+.highlight .ge {
+    color: rgb(167, 160, 148);
+}
+.highlight .gr {
+    color: rgb(223, 68, 66);
+}
+.highlight .gh {
+    color: rgb(235, 116, 67);
+}
+.highlight .gi {
+    color: rgb(234, 255, 97);
+}
+.highlight .go {
+    color: rgb(167, 160, 148);
+}
+.highlight .gp {
+    color: rgb(167, 160, 148);
+}
+.highlight .gs {
+    color: rgb(167, 160, 148);
+}
+.highlight .gu {
+    color: rgb(235, 116, 67);
+}
+.highlight .gt {
+    color: rgb(167, 160, 148);
+}
+.highlight .kc {
+    color: rgb(235, 116, 67);
+}
+.highlight .kd {
+    color: rgb(65, 156, 221);
+}
+.highlight .kn {
+    color: rgb(234, 255, 97);
+}
+.highlight .kp {
+    color: rgb(234, 255, 97);
+}
+.highlight .kr {
+    color: rgb(65, 156, 221);
+}
+.highlight .kt {
+    color: rgb(223, 68, 66);
+}
+.highlight .ld {
+    color: rgb(167, 160, 148);
+}
+.highlight .m {
+    color: rgb(102, 215, 206);
+}
+.highlight .s {
+    color: rgb(102, 215, 206);
+}
+.highlight .na {
+    color: rgb(167, 160, 148);
+}
+.highlight .nb {
+    color: rgb(255, 212, 77);
+}
+.highlight .nc {
+    color: rgb(65, 156, 221);
+}
+.highlight .no {
+    color: rgb(235, 116, 67);
+}
+.highlight .nd {
+    color: rgb(65, 156, 221);
+}
+.highlight .ni {
+    color: rgb(235, 116, 67);
+}
+.highlight .ne {
+    color: rgb(235, 116, 67);
+}
+.highlight .nf {
+    color: rgb(65, 156, 221);
+}
+.highlight .nl {
+    color: rgb(167, 160, 148);
+}
+.highlight .nn {
+    color: rgb(167, 160, 148);
+}
+.highlight .nx {
+    color: rgb(167, 160, 148);
+}
+.highlight .py {
+    color: rgb(167, 160, 148);
+}
+.highlight .nt {
+    color: rgb(65, 156, 221);
+}
+.highlight .nv {
+    color: rgb(65, 156, 221);
+}
+.highlight .ow {
+    color: rgb(234, 255, 97);
+}
+.highlight .w {
+    color: rgb(167, 160, 148);
+}
+.highlight .mf {
+    color: rgb(102, 215, 206);
+}
+.highlight .mh {
+    color: rgb(102, 215, 206);
+}
+.highlight .mi {
+    color: rgb(102, 215, 206);
+}
+.highlight .mo {
+    color: rgb(102, 215, 206);
+}
+.highlight .sb {
+    color: rgb(168, 161, 149);
+}
+.highlight .sc {
+    color: rgb(102, 215, 206);
+}
+.highlight .sd {
+    color: rgb(167, 160, 148);
+}
+.highlight .s2 {
+    color: rgb(102, 215, 206);
+}
+.highlight .se {
+    color: rgb(235, 116, 67);
+}
+.highlight .sh {
+    color: rgb(167, 160, 148);
+}
+.highlight .si {
+    color: rgb(102, 215, 206);
+}
+.highlight .sx {
+    color: rgb(102, 215, 206);
+}
+.highlight .sr {
+    color: rgb(223, 68, 66);
+}
+.highlight .s1 {
+    color: rgb(102, 215, 206);
+}
+.highlight .ss {
+    color: rgb(102, 215, 206);
+}
+.highlight .bp {
+    color: rgb(65, 156, 221);
+}
+.highlight .vc {
+    color: rgb(65, 156, 221);
+}
+.highlight .vg {
+    color: rgb(65, 156, 221);
+}
+.highlight .vi {
+    color: rgb(65, 156, 221);
+}
+.highlight .il {
+    color: rgb(102, 215, 206);
+}
+.highlight {
+    background-color: rgb(30, 33, 34);
+}
+pre.highlight,
+code {
+    background-color: rgb(30, 33, 34);
+}
+a {
+    color: rgb(168, 160, 149);
+    text-decoration-color: currentcolor;
+}
+a:hover {
+    border-bottom-color: rgb(77, 83, 86);
+}
+header {
+    color: rgb(232, 230, 227);
+}
+header .social li {
+    color: rgb(232, 230, 227);
+}
+header .social li i:hover {
+    color: rgb(168, 160, 149);
+}
+.post-title {
+    color: rgb(211, 207, 201);
+}
+.post-title:hover {
+    color: rgb(168, 160, 149);
+    border-bottom-color: currentcolor;
+}
+.post-description {
+    color: rgb(211, 207, 201);
+}
+.post-date {
+    color: rgb(168, 160, 149);
+}
+.post-tags li {
+    background-color: rgb(34, 36, 38);
+    color: rgb(232, 230, 227);
+}
+.posts > li:not(:last-child) {
+    border-bottom-color: rgb(53, 57, 59);
+}
+.post-meta a:hover {
+    border-bottom-color: currentcolor;
+}
+.navbar a {
+    color: inherit;
+}
+.navbar ul li {
+    border-color: rgb(48, 52, 54);
+}
+.navbar ul li:not(:first-child) {
+    border-left-color: currentcolor;
+}
+.navbar ul li:hover {
+    background-color: rgba(24, 26, 27, 0.15);
+}
+.navbar ul li.active {
+    background-color: rgba(24, 26, 27, 0.15);
+}
+#texture-picker {
+    background-color: rgb(24, 26, 27);
+    border-color: rgb(62, 68, 70);
+}
+#texture-picker .info {
+    background-color: rgba(119, 76, 0, 0.7);
+}
+#texture-picker .texture-colors > div {
+    border-color: rgb(53, 57, 59);
+}
+#texture-picker #red {
+    background-color: rgb(204, 55, 0);
+}
+#texture-picker #blue {
+    background-color: rgb(27, 73, 88);
+}
+#texture-picker #black {
+    background-color: rgb(13, 14, 14);
+}
+#texture-picker #purple {
+    background-color: rgb(82, 41, 122);
+}
+#texture-picker #green {
+    background-color: rgb(48, 143, 90);
+}
+.texture-black {
+    background-image: url("https://samarsault.com/texture/assets/textures/black.jpg");
+}
+.texture-black h2 {
+    color: rgb(168, 160, 149);
+}
+.texture-blue {
+    background-image: url("https://samarsault.com/texture/assets/textures/blue.jpg");
+}
+.texture-blue h2 {
+    color: rgb(211, 207, 201);
+}
+.texture-blue .social i:hover {
+    color: rgb(221, 218, 214);
+}
+.texture-blue .post-date {
+    color: rgb(200, 195, 188);
+}
+.texture-red {
+    background-image: url("https://samarsault.com/texture/assets/textures/red.jpg");
+}
+.texture-purple {
+    background-image: url("https://samarsault.com/texture/assets/textures/purple.jpg");
+}
+.texture-green {
+    background-image: url("https://samarsault.com/texture/assets/textures/green.jpg");
+}
+.texture-green .post-date {
+    color: rgb(200, 195, 188);
+}
+.texture-red h2,
+.texture-purple h2 {
+    color: rgb(200, 195, 188);
+}
+.texture-red .social i,
+.texture-purple .social i {
+    color: rgb(211, 207, 201);
+}
+.texture-red .social i:hover,
+.texture-purple .social i:hover {
+    color: rgb(222, 219, 215);
+}
+.texture-red .post-date,
+.texture-purple .post-date {
+    color: rgb(211, 207, 201);
+}
+
+/* Override Style */
+.vimvixen-hint {
+    background-color: #7b5300 !important;
+    border-color: #d8b013 !important;
+    color: #f3e8c8 !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1,
+.nfe-quote-text {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: #0f3a48 !important;
+}
+.tou-z65h9k,
+.tou-mignzq,
+.tou-1b6i2ox,
+.tou-lnqlqk {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.tou-75mvi {
+    background-color: #032029 !important;
+}
+.tou-ta9e87,
+.tou-1w3fhi0,
+.tou-1b8t2us,
+.tou-py7lfi,
+.tou-1lpmd9d,
+.tou-1frrtv8,
+.tou-17ezmgn {
+    background-color: #0a0a0a !important;
+}
+.tou-uknfeu {
+    background-color: #231603 !important;
+}
+.tou-6i3zyv {
+    background-color: #19576c !important;
+}
+embed[type="application/pdf"] { filter: invert(100%) contrast(90%); }

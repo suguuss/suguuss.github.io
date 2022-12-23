@@ -1,0 +1,9 @@
+sass:
+  sass_dir: _sass
+
+permalink: /posts/:title/
+texture:
+  showNav: true
+
+plugins:
+  - jekyll-seo-tag
