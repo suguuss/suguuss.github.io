@@ -10,6 +10,10 @@ $desktopWidth: 1024px;
 }
 
 img, embed, object, video {
+	max-width: 65%;
+}
+
+table img {
 	max-width: 100%;
 }
 

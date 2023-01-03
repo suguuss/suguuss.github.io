@@ -33,11 +33,13 @@ html, body, input, textarea, select, button, dialog {
 }
 html, body, input, textarea, select, button {
     border-color: #736b5e;
+    color: #c9c7c4;
+}
+
+h1, h2, h3, h4 {
     color: #e8e6e3;
 }
-a {
-    color: #3391ff;
-}
+
 table {
     border-color: #545b5e;
 }
@@ -345,13 +347,14 @@ pre.highlight,
 code {
     background-color: rgb(30, 33, 34);
 }
-a {
-    color: rgb(168, 160, 149);
-    text-decoration-color: currentcolor;
-}
-a:hover {
-    border-bottom-color: rgb(77, 83, 86);
-}
+/* a { */
+    /* color: rgb(162, 117, 56); */
+    /* color: rgb(168, 160, 149); */
+    /* text-decoration-color: currentcolor; */
+/* } */
+/* a:hover { */
+    /* border-bottom-color: rgb(162, 117, 56); */
+/* } */
 header {
     color: rgb(232, 230, 227);
 }
@@ -513,3 +516,7 @@ gr-main-header {
     background-color: #19576c !important;
 }
 embed[type="application/pdf"] { filter: invert(100%) contrast(90%); }
+
+.section-nav {
+	background-color: #202324;
+}

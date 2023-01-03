@@ -26,11 +26,11 @@ body {
 }
 
 a {
-	color: $linkColor;
+	color: rgb(160, 129, 86);
 	text-decoration: none;
 	transition: border-bottom 0.4s;
 	&:hover {
-		border-bottom: 0.5px solid $linkColor;
+		border-bottom: 0.5px solid rgb(160, 129, 86);
 	}
 }
 
@@ -40,12 +40,12 @@ h1, h2, h3 {
 }
 
 h1 {
-	@include fluidType(36px, 48px);
+	@include fluidType(32px, 32px);
 }
 
 h2 {
 	font-weight: bold;
-	@include fluidType(28px, 32px);
+	@include fluidType(28px, 28px);
 }
 
 h4 {
@@ -103,7 +103,7 @@ header {
 //
 .container {
 	margin:0 150px;
-	max-width: 720px;
+	max-width: 900px;
 
 	div.highlighter-rouge {
 		right: 150px;
@@ -220,6 +220,7 @@ header {
 .post-container {
 	img {
 		margin: 20px 0;
+		background: white;
 	}
 
 	p {
@@ -263,4 +264,11 @@ header {
 			}
 		}
 	}
+}
+
+.section-nav {
+	background-color: #ececec;
+	border-radius: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
