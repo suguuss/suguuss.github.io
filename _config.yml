@@ -5,10 +5,5 @@ permalink: /posts/:title/
 texture:
   showNav: true
 
-toc:
-  min_level: 1
-  max_level: 2
-
 plugins:
   - jekyll-seo-tag
-  - jekyll-toc 
