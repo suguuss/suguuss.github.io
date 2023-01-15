@@ -98,11 +98,13 @@ select:-webkit-autofill {
     text-decoration-color: inherit;
 }
 a {
+    color: rgb(160, 129, 86);
     background-color: transparent;
 }
 a:active,
 a:hover {
     outline-color: currentcolor;
+    border-bottom: 0.5px solid rgb(132, 80, 8);
 }
 abbr[title] {
     border-bottom-color: currentcolor;
@@ -110,7 +112,7 @@ abbr[title] {
 mark {
     background-color: rgb(153, 153, 0);
     background-image: none;
-    color: rgb(232, 230, 227);
+    color: rgb(160, 129, 86);
 }
 img {
     border-color: currentcolor;

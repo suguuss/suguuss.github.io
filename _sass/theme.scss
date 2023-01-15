@@ -26,11 +26,12 @@ body {
 }
 
 a {
-	color: rgb(160, 129, 86);
+	// rgb(160, 129, 86)
+	color: rgb(132, 80, 8);
 	text-decoration: none;
 	transition: border-bottom 0.4s;
 	&:hover {
-		border-bottom: 0.5px solid rgb(160, 129, 86);
+		border-bottom: 0.5px solid rgb(132, 80, 8);
 	}
 }
 
