@@ -8,7 +8,7 @@ navig:
   - title: Github Repo
     url: https://github.com/suguuss/raycasting
   - title: Live Demo
-    url: /demo/raycasting_demo/
+    url: /raycasting/demo/
 ---
 
 # Introduction
