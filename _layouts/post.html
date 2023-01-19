@@ -34,6 +34,9 @@
 
     if (type.length < 10) {
       quote.classList.add(type.toLowerCase());
+      quote.children[0].classList.add("inner" + type.toLowerCase() + "top");
+      quote.children[1].classList.add("inner" + type.toLowerCase());
+      console.log(quote);
     }
   }
 </script>

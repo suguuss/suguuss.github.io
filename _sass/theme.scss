@@ -275,11 +275,46 @@ header {
 }
 
 .note {
+	font-style: normal !important;
+	margin-left: 0px;
 	color: #1d77ea !important; 
 }
+.innernote {
+	margin-top: 0px;
+	border: 2px solid #1d77ea;
+	padding: 10px;
+	color:black;
+}
+.innernotetop {
+	margin-bottom: 5px;
+}
+
 .warning {
+	font-style: normal !important;
+	margin-left: 0px;
 	color: #bf6900 !important; 
 }
+.innerwarning {
+	margin-top: 0px;
+	border: 2px solid #bf6900;
+	padding: 10px;
+	color:black;
+}
+.innerwarningtop {
+	margin-bottom: 5px;
+}
+
 .important {
-	color: #bf0000 !important; 
+	font-style: normal !important;
+	margin-left: 0px;
+	color: #cc2828 !important; 
+}
+.innerimportant {
+	margin-top: 0px;
+	border: 2px solid #cc2828;
+	padding: 10px;
+	color:black;
+}
+.innerimportanttop {
+	margin-bottom: 5px;
 }

@@ -522,3 +522,14 @@ embed[type="application/pdf"] { filter: invert(100%) contrast(90%); }
 .section-nav {
 	background-color: #202324;
 }
+
+.innernote {
+	color:#c9c7c4;
+}
+
+.innerwarning {
+	color:#c9c7c4;
+}
+.innerimportant {
+	color:#c9c7c4;
+}
