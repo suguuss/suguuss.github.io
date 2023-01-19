@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   {%- include head.html -%}
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 <body>
   <!-- <header class="texture-{{ site.texture.style }}"> -->
@@ -24,3 +25,15 @@
   </main>
 </body>
 </html>
+
+<script>
+  for ( quote of document.querySelectorAll('blockquote') ) {
+    console.log(quote.firstElementChild.innerText)
+
+    const type = quote.firstElementChild.innerText
+
+    if (type.length < 10) {
+      quote.classList.add(type.toLowerCase());
+    }
+  }
+</script>
