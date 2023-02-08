@@ -39,4 +39,9 @@
       console.log(quote);
     }
   }
+
+  let list = document.getElementsByClassName('post-tags')[0];
+  for (tag of list.children) {
+    tag.innerText = tag.innerText.replace("_", " ");
+  }
 </script>
