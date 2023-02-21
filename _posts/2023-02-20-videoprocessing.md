@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Video Processing"
-description: Real time video processing
+description: Real time video processing on FPGA
 date:   2023-02-20 21:03:36 +0530
 categories: Hardware VHDL Video_Processing
 navig: 
@@ -22,7 +22,7 @@ When thinking about the project, I wanted the dataflow to look something like th
 
 ![supposed_block](/assets/convolution/supposed_block.png)
 
-The block diagram of the current project is the following :
+The block diagram of the current project should look something like that, even if technically, the HDMI driver is with the pattern generator, and the signals are being delayed by the convolution engine.
 
 ![real_block](/assets/convolution/real_block.png)
 
@@ -275,11 +275,13 @@ At this point, I could display anything on a screen using the HDMI Driver. I cou
 
 # Convolution engine
 
-As mentioned in the introduction, the convolution is a very important algorithm for image processing. The gif shows how a kernel is applied on a matrix. Different kernels are used to obtain different results (edge detection, noise filtering, blur effect, ...).
+As mentioned in the introduction, the convolution is a very important algorithm in image processing. The gif shows how a kernel is applied on a matrix (the grayscale image). Different kernels are used to obtain different results such as : edge detection, noise filtering, blur effect.
 
 ![conv_example](/assets/convolution/conv_example.gif)
 
-The kernel used in the gif can sharpen an image. I have tested this kernel in python on an image, I also tested a sobel filter (edge detection) on the same image. The python code for this is the following : 
+## 2D Convolution in python
+
+The kernel used in the previous gif can be used to sharpen an image. I have tested this sharpening kernel in python on an image, I also tested a sobel filter (edge detection) on the same image. Here are the python code and the results.
 
 ```python
 import cv2
@@ -304,8 +306,166 @@ cv2.imwrite("planel_sobel.jpg", plane_sobel)
 
 The pictures are presented in the following order : the original, the sharpened and the edge detected with the sobel filter.
 
-![plane](/assets/convolution/plane.jpg)
 
-![plane](/assets/convolution/plane_sharp.jpg)
+{% include image.html url="/assets/convolution/plane.jpg" alt="plane" description="Original" %}
+{% include image.html url="/assets/convolution/plane_sharp.jpg" alt="plane_sharp" description="Sharpened" %}
+{% include image.html url="/assets/convolution/plane_sobel.jpg" alt="plane_sobel" description="Edge detected" %}
 
-![plane](/assets/convolution/plane_sobel.jpg)
+
+## 2D Convolution in VHDL
+
+I started by designing the convolution engine as a schematic on [draw.io](https://app.diagrams.net/). The gif below is an animation of a kernel being applied to an image. At every clock cycle, a new pixel comes in, and every pixels are shifted by one. 
+
+Because the kernel is applied to pixels on the line above and under the current pixel, I used a FIFO to keep the pixels in memory. The size of the FIFO is really important, because for the convolution to work, the pixels have to be multiplied by the right kernel coefficient at the right time. A wrong size will result in a wrong timing.
+
+![myconv_gif](/assets/convolution/conv_engine.gif)
+
+We can observe a delay before the kernel is applied to the first pixel, but after the delay there is a new (filtered) pixel going out at every clock cycle. Because of this delay, I also added 3 shift registers to delay the `hsync`, `vsync` and `de` control signals. 
+
+> WARNING
+> 
+> I am 90% certain there is a bug in the current code. It looks like it's working but I think it's not because of the delay
+
+
+The entity of the engine is the following : 
+
+```vhdl
+entity convolution is 
+	port (
+		clk:		in		std_logic;
+		pxl:		in		std_logic_vector(7 downto 0);
+		de_in:		in		std_logic;
+		hs_in:		in		std_logic;
+		vs_in:		in		std_logic;
+		
+		new_pxl:	out		std_logic_vector(7 downto 0) := (others => '0');
+		gray_out:	out		std_logic_vector(7 downto 0) := (others => '0');
+		de_out:		out		std_logic := '0';
+		hs_out:		out		std_logic := '0';
+		vs_out:		out		std_logic := '0'
+	);
+end convolution;
+```
+
+We can see the control signals coming in, and the delayed control signals going out. The input pixel is also delayed and can be displayed at the same time as the filtered output if you need to.
+
+Here is the architecture of the engine : 
+
+```vhdl
+architecture rtl of convolution is
+
+	constant FRAME_WIDTH:	integer := 640;
+	constant KERNEL_SIZE:	integer := 3;
+	
+	type t_kernel is array (0 to (KERNEL_SIZE*KERNEL_SIZE)-1) of integer;
+	type t_fifo is array (0 to FRAME_WIDTH - KERNEL_SIZE - 1) of integer range 0 to 255;
+
+	constant sobel_x: t_kernel := (	-1,  0,  1,
+									-2,  0,  2,
+									-1,  0,  1);
+	
+	constant sobel_y: t_kernel := (	 1,  2,  1,
+									 0,  0,  0,
+									-1, -2, -1);
+
+	signal new_pxl_x:	integer := 0;
+	signal new_pxl_y:	integer := 0;
+	signal new_pxl_sum:	integer := 0;
+
+	signal fifo_1:		t_fifo;
+	signal fifo_2:		t_fifo;
+
+	signal image: 		t_kernel := (0, 0, 0, 0, 0, 0, 0, 0, 0);	
+	
+	-- Shift registers to delay the control signals
+	constant SR_SIZE:	integer := 5;
+	type t_fifo_delay is array (0 to SR_SIZE) of integer range 0 to 255;
+	signal fifo_gray:	t_fifo_delay;
+	signal de_sr:		std_logic_vector(SR_SIZE downto 0) := (others => '0');
+	signal hs_sr:		std_logic_vector(SR_SIZE downto 0) := (others => '0');
+	signal vs_sr:		std_logic_vector(SR_SIZE downto 0) := (others => '0');
+
+begin
+	
+	de_out <= de_sr(de_sr'high);
+	hs_out <= hs_sr(hs_sr'high);
+	vs_out <= vs_sr(vs_sr'high);
+	gray_out <= std_logic_vector(to_unsigned(fifo_gray(fifo_gray'high), 8));
+	
+	shifter: process( clk )
+	begin
+		if rising_edge(clk) then
+			if de_in = '1' then
+				image(0) 	<= image(1);
+				image(1) 	<= image(2);
+				image(2) 	<= fifo_2(fifo_2'high);
+				fifo_2 		<= image(3) & fifo_2(0 to fifo_2'high-1);
+				image(3) 	<= image(4);
+				image(4) 	<= image(5);
+				image(5) 	<= fifo_1(fifo_1'high);
+				fifo_1 		<= image(6) & fifo_1(0 to fifo_1'high-1);
+				image(6) 	<= image(7);
+				image(7) 	<= image(8);
+				image(8) 	<= to_integer(unsigned(pxl));
+				fifo_gray	<= to_integer(unsigned(pxl)) & fifo_gray(0 to fifo_gray'high-1);
+			end if;
+			
+			de_sr 		<= de_sr(de_sr'high-1 downto 0) & de_in;
+			hs_sr 		<= hs_sr(hs_sr'high-1 downto 0) & hs_in;
+			vs_sr 		<= vs_sr(vs_sr'high-1 downto 0) & vs_in;
+
+		end if;
+	end process; -- shifter
+
+	mutliplier : process( clk )
+	begin
+		if rising_edge(clk) then
+
+			new_pxl_x <= 	(image(0) * sobel_x(0)) +
+							(image(1) * sobel_x(1)) +
+							(image(2) * sobel_x(2)) +
+							(image(3) * sobel_x(3)) +
+							(image(4) * sobel_x(4)) +
+							(image(5) * sobel_x(5)) +
+							(image(6) * sobel_x(6)) +
+							(image(7) * sobel_x(7)) +
+							(image(8) * sobel_x(8));
+							
+			new_pxl_y <= 	(image(0) * sobel_y(0)) +
+							(image(1) * sobel_y(1)) +
+							(image(2) * sobel_y(2)) +
+							(image(3) * sobel_y(3)) +
+							(image(4) * sobel_y(4)) +
+							(image(5) * sobel_y(5)) +
+							(image(6) * sobel_y(6)) +
+							(image(7) * sobel_y(7)) +
+							(image(8) * sobel_y(8));
+
+			new_pxl_sum <= abs(new_pxl_x + new_pxl_y);
+
+			if new_pxl_sum > 64 then
+				new_pxl <= (others => '1');
+			else
+				new_pxl <= (others => '0');
+			end if;
+
+		end if;
+	end process ; -- mutliplier
+
+end rtl;
+```
+
+The file and it's testbench can be found in the Github repository in the folder `src/convolution`.
+
+## Result
+
+This is the result of the convolution. The video starts by displaying the original pattern, then the grayscale conversion. After a small black screen, there is the result of the convolution with the sobel filter, and finaly the white squares filled with gray is the result of the convolution with the delayed grayscale pixels added.
+
+![resultgif](/assets/convolution/result.gif)
+
+
+# Conclusion
+
+In this post, I've covered most part of my video processing project. The only parts that were not covered are the camera module and the frame buffer. Unfortunately could not make the camera module work, so I decided to drop it and use a static pattern instead. Even if these were not working, I am still happy about the result. 
+
+If I could find a VGA Input module, I could use it and place the convolution engine between the vga input and a vga output module. This would let me do some video processing at a resolution of 1080p with a refresh rate of 60Hz.
