@@ -50,6 +50,8 @@ To find the correct timings, I used this [Video Timings Calculator](https://tomv
 
 The HDMI transmitter has to be configured using I2C. The code is not covered here, because I did not write it. It came in an example projet with the dev board. It contains a clock divider to generate the SCL, a FSM to decided when to start and stop the initialisation, and an LUT containing the registers address and the data that needs to be written in it. You can find the code in the `src/HDMI` folder in the Github repository.
 
+In the table taken from the Video Timings Calculator, the pixel clock for a 1080p resolution was **148.5 MHz**. To achieve this, I used a PLL IP and configured it to get the correct output frequency.
+
 The entity of the HDMI driver is represented by the following VHDL code. The default values in the generic are for a resolution of 1080p @ 60Hz. 
 
 ```vhdl
