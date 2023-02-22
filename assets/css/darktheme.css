@@ -533,3 +533,7 @@ embed[type="application/pdf"] { filter: invert(100%) contrast(90%); }
 .innerimportant {
 	color:#c9c7c4;
 }
+
+.language-plaintext {
+	color: rgb(160, 129, 86) !important;
+}

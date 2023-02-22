@@ -18,35 +18,37 @@ Field-programmable gate arrays (FPGAs) are an excellent choice for video process
 
 One of the key algorithms I wanted to implement is the convolution, which is a fundamental operation in image and video processing. Convolution involves taking a small matrix called a kernel and applying it to an image or video frame. This operation is used for a wide range of applications, including edge detection, blurring, and noise reduction. At the time of writing, I have only tested the edge detection, but I think it can do most of the effects.
 
-When thinking about the project, I wanted the dataflow to look something like the following figure. Unfortunately I was not able to make the camera module work, so the project does not have a camera. Insted there is a generated pattern, and the convolution is applied to this pattern.
+When thinking about the project, I wanted the dataflow to look something like the following figure. Unfortunately I was not able to make the camera module work, so the project does not have a camera. Instead there is a generated pattern, and the convolution is applied to this pattern.
 
 ![supposed_block](/assets/convolution/supposed_block.png)
 
-The block diagram of the current project should look something like that, even if technically, the HDMI driver is with the pattern generator, and the signals are being delayed by the convolution engine.
+The dataflow of the current project looks more or less like that, even if technically, the HDMI driver is with the pattern generator, and the signals are being delayed by the convolution engine.
 
 ![real_block](/assets/convolution/real_block.png)
 
 # HDMI Driver
 
-The very first thing I wrote was the HDMI Driver. I need to be certain that the display works before I even try to display a processed output.
+I started by writing the HDMI Driver. This is important because I cannot see the result of the convolution without a display. I also need to check that the displayed pixels are in the correct position.
 
-To send data to the screen, I'm going to use the HDMI TX connector present on the development board. The HDMI is controlled by a transmitter chip that translates VGA style data to HDMI data. The chip is the **ADV7513** ([datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/adv7513.pdf) and [User Manual](https://www.analog.com/media/en/technical-documentation/user-guides/adv7513_hardware_user_guide.pdf)). Because vga is pretty basic, this chip will simplify the driver by a lot.
+To send data to the screen, I'm going to use the HDMI TX connector present on the development board. The HDMI is controlled by a transmitter chip that translates VGA style data to HDMI data. This chip is the **ADV7513** from Analog Devices([datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/adv7513.pdf) and [User Manual](https://www.analog.com/media/en/technical-documentation/user-guides/adv7513_hardware_user_guide.pdf)). It is a High Performance HDMI Transmitter capable of supporting all video formats up to 1080p.
 
 
-## Getting the informations
+## Getting the timings informations
 
-Controlling a display using VGA data is not that hard. There are only 3 control signals (Data Enable, Horizontal Sync, Vertical Sync) and the RGB data. The figure below shows how the vertical and horizontal sync signals are used. In this figure, the polarity of the signals (vsync and hsync) is active low. It means the signal is low during the sync pulse. For some standard, the signals can be active high. The polarity is specified in the calculator listed below.
+Driving a display with VGA only requires 2 counters to keep track of where we are in the frame, 3 control signals (Data Enable, Horizontal Sync, Vertical Sync) and the RGB data. Each resolution needs different timings for the control signals, and a different pixel clock frequency. 
+
+The figure below shows how the vertical and horizontal sync signals are used. In this figure, the polarity of the signals (vsync and hsync) is active low. It means the signal is low during the sync pulse. For some standard, the signals can be active high. The polarity is specified in the calculator listed below.
 
 ![vga_timings](/assets/convolution/vga_timings.jpg)
 
 
-To get the correct timings, I used this [Video Timings Calculator](https://tomverbeure.github.io/video_timings_calculator). You can select any resolution and refresh rate, and it will give you all the informations needed. In the example below, I choose a 1080p resolution with a 60Hz refresh rate. The information that we need are in the column **CEA-861**. 
+To find the correct timings, I used this [Video Timings Calculator](https://tomverbeure.github.io/video_timings_calculator). The website let's you select any resolution and refresh rate, and it will give you all the informations needed (see the generic in the entity). In the example below, I choose a 1080p resolution with a 60Hz refresh rate. The information that we need are in the column **CEA-861**. 
 
 ![calculator](/assets/convolution/calculator.jpg)
 
 ## VHDL implementation
 
-The HDMI transmitter has to be configured using I2C. The code is not covered here, because I did not write it. It came with some example projets with the dev board. However, you can find the code in the `src/HDMI` folder in the github repository.
+The HDMI transmitter has to be configured using I2C. The code is not covered here, because I did not write it. It came in an example projet with the dev board. It contains a clock divider to generate the SCL, a FSM to decided when to start and stop the initialisation, and an LUT containing the registers address and the data that needs to be written in it. You can find the code in the `src/HDMI` folder in the Github repository.
 
 The entity of the HDMI driver is represented by the following VHDL code. The default values in the generic are for a resolution of 1080p @ 60Hz. 
 
@@ -79,7 +81,7 @@ entity HDMI_TX is
 end HDMI_TX;
 ```
 
-The architecture of the controller is made of 3 processes. One for the vertical sync, one for the horizontal sync and one for the data. When testing the driver, the data was either a full color or some random patterns.
+The architecture of the controller is made of 3 processes. One for the vertical sync, one for the horizontal sync and one for the data. When testing the driver, the data was either a full color or some random patterns based on the value of the counters.
 
 ```vhdl
 architecture behavioral of HDMI_TX is
@@ -188,8 +190,9 @@ begin
 end behavioral ; -- behavioral
 ```
 
-When connecting a display to the board, I could see the expected results, so I concluded the driver was working as intended.
+When connecting a display to the board, I could see the expected results, so I concluded the driver was working as intended. This is the result of the test.
 
+![result_hdmi_rgb](/assets/convolution/hdmi_rgb.jpg)
 
 # RGB to grayscale converter
 
@@ -198,11 +201,11 @@ I decided to convert the RGB video stream coming from the camera (pattern genera
 1. I don't need the colors when doing edge detections (with the Sobel or Laplacian kernel).
 2. There are less data to handle when using grayscale.
 
-To do the conversion, I searched for an efficient way to convert RGB to Gray on FPGA. I found [this paper](https://www.sciencedirect.com/science/article/pii/S187705092031200X?ref=cra_js_challenge&fr=RR-1), and decided to implement it. They explain in the paper that the gray value of a pixel is composed of 28.1% of red, 56.2% of green and 9.3% of blue, this is used in the "rgb2gray" function in MATLAB.
+To do the conversion, I searched for an efficient way to convert RGB to Grayscale on FPGA. I found [this paper](https://www.sciencedirect.com/science/article/pii/S187705092031200X?ref=cra_js_challenge&fr=RR-1), and decided to implement it. They explain in the paper that the gray value of a pixel is composed of 28.1% of red, 56.2% of green and 9.3% of blue, this is used in the "rgb2gray" function in MATLAB.
 
 > NOTE
 > 
-> After testing the grayscale conversion, I decided that the blue was not high enough, and added more blue. 
+> After testing the grayscale conversion, I decided that the blue was not high enough, and added more blue by shifting by 2 bits intead of 4.
 
 
 This is the block diagram of the proposed technique.
@@ -270,7 +273,9 @@ We can see in the simulation that I have the same result as the one in the examp
 > The tests were done before adding more blue.
 
 
-At this point, I could display anything on a screen using the HDMI Driver. I could also feed the data through the grayscale converter and see the result on the screen.
+At this point, I could display anything on a screen using the HDMI Driver. I could also feed the data through the grayscale converter and see the result on the screen. This is the same pattern than the one generated to test the HDMI but converted to grayscale through the converter : 
+
+![hdmi_gray_test](/assets/convolution/hdmi_gray.jpg)
 
 
 # Convolution engine
@@ -349,7 +354,7 @@ end convolution;
 
 We can see the control signals coming in, and the delayed control signals going out. The input pixel is also delayed and can be displayed at the same time as the filtered output if you need to.
 
-Here is the architecture of the engine : 
+Here is the architecture of the engine for an edge detection using a sobel filter :
 
 ```vhdl
 architecture rtl of convolution is
