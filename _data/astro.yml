@@ -33,7 +33,7 @@
 - id: m42
   title: M42
   subtitle: Orion Nebula
-  image: /astro/M42.png
+  image: /astro/M42.jpg
   gear:
     Telescope: Canon EF 100-400  f/4.5-5.6
     Camera: Canon EOS R6
@@ -41,8 +41,8 @@
     Integration Time: 51*30s (25.5min)
     ISO: 1600
   processing:
-    Stacking: Siril
-    Processing: Siril, GraXpert, SyQon-Starless, Veralux
+    Stacking: PixInsight - WBPP
+    Processing: PixInsight, RC-Astro
     Date: 2026/02/24
     Location: Bortle 4
 
