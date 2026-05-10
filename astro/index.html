@@ -1,0 +1,61 @@
+---
+permalink: /astro/
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta name="darkreader-lock">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Astrophotography</title>
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+	<link rel="stylesheet" href="/assets/css/astro.css">
+</head>
+
+<body>
+
+	<header>
+		<h1>Astrophotography</h1>
+		<div class="divider"></div>
+	</header>
+
+	<div class="gallery">
+		{% for photo in site.data.astro %}
+		<div class="photo-card" onclick="openLightbox('{{ photo.id }}')">
+			<img src="{{ photo.image }}" alt="{{ photo.title }} — {{ photo.subtitle }}" loading="lazy">
+			<div class="photo-card-body">
+				<h2>{{ photo.title }}</h2>
+				<p>{{ photo.subtitle }}</p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+	<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+		<button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+		<div class="lightbox-inner">
+			<img id="lightbox-img" src="" alt="">
+			<div class="lightbox-info">
+				<div>
+					<h2 id="lightbox-title"></h2>
+					<p class="subtitle" id="lightbox-subtitle"></p>
+				</div>
+				<div class="info-section" id="lightbox-gear"></div>
+				<div class="info-section" id="lightbox-processing"></div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		const photosData = {{ site.data.astro | jsonify }};
+		const photos = {};
+		photosData.forEach(p => photos[p.id] = p);
+	</script>
+	<script src="/assets/js/astro.js"></script>
+
+</body>
+
+</html>
